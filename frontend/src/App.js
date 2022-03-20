@@ -17,7 +17,7 @@ import requireAuth from "./utils/RequireAuth";
 import axios from "axios";
 
 if (window.location.origin === "http://localhost:3000") {
-  axios.defaults.baseURL = "http://127.0.0.1:8000";
+  axios.defaults.baseURL = "http://localhost/";
 } else {
   axios.defaults.baseURL = window.location.origin;
 }
