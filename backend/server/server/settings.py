@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     #
     "apps.accounts",
     "apps.notes",
+    "apps.telegram_bot"
 ]
 
 # configure DRF
@@ -178,3 +179,5 @@ STATIC_ROOT = BASE_DIR / "django_static"
 
 CELERY_BROKER_URL = "redis://redis:6379"
 CELERY_RESULT_BACKEND = "redis://redis:6379"
+
+TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", None)
