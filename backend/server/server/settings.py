@@ -175,3 +175,6 @@ USE_TZ = True
 MEDIA_URL = "/media/"
 STATIC_URL = "/django_static/"
 STATIC_ROOT = BASE_DIR / "django_static"
+
+CELERY_BROKER_URL = "redis://redis:6379"
+CELERY_RESULT_BACKEND = "redis://redis:6379"

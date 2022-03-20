@@ -46,6 +46,21 @@ services:
         depends_on:
             - db
 
+    redis:
+        image: "redis:alpine"
+
+    celery:
+        build:
+            context: .
+            dockerfile: ./docker/backend/Dockerfile
+        entrypoint: /app/docker/backend/celery-entrypoint.dev.sh
+        env_file:
+        - ./.env.dev
+        depends_on:
+        - db
+        - backend
+        - redis
+
 volumes:
     static_volume: 
     postgres_data:
