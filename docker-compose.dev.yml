@@ -20,6 +20,7 @@ services:
         depends_on: 
             - backend
     backend:
+        container_name: backend_container
         restart: unless-stopped
         build:
             context: .
