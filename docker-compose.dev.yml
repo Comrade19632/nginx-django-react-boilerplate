@@ -15,7 +15,8 @@ services:
         ports:
             - 80:80
         volumes:
-            - static_volume:/app/backend/server/django_static
+            - static_volume:/app/backend/server/staticfiles
+            - media_volume:/app/backend/server/mediafiles
             - ./docker/nginx/development:/etc/nginx/conf.d
         depends_on: 
             - backend
@@ -28,7 +29,8 @@ services:
         entrypoint: /app/docker/backend/wsgi-entrypoint.dev.sh
         volumes:
             - .:/app
-            - static_volume:/app/backend/server/django_static
+            - static_volume:/app/backend/server/staticfiles
+            - media_volume:/app/backend/server/mediafiles
         expose:
             - 8000      
         env_file:
@@ -65,3 +67,4 @@ services:
 volumes:
     postgres_data: 
     static_volume: 
+    media_volume:

@@ -17,7 +17,8 @@ services:
             - 80:80
             - 443:443
         volumes:
-            - static_volume:/app/backend/server/django_static
+            - static_volume:/app/backend/server/staticfiles
+            - media_volume:/app/backend/server/mediafiles
             - ./docker/nginx/production:/etc/nginx/conf.d
             - ./docker/nginx/certbot/conf:/etc/letsencrypt
             - ./docker/nginx/certbot/www:/var/www/certbot
@@ -29,7 +30,8 @@ services:
         volumes:
             - ./docker/nginx/certbot/conf:/etc/letsencrypt
             - ./docker/nginx/certbot/www:/var/www/certbot
-        entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"       
+        entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"     
+          
     backend:
         container_name: backend_container
         restart: unless-stopped
@@ -38,7 +40,8 @@ services:
             dockerfile: ./docker/backend/Dockerfile
         entrypoint: /app/docker/backend/wsgi-entrypoint.prod.sh
         volumes:
-            - static_volume:/app/backend/server/django_static
+            - static_volume:/app/backend/server/staticfiles
+            - media_volume:/app/backend/server/mediafiles
         expose:
             - 8000        
         env_file:
@@ -75,3 +78,4 @@ services:
 volumes:
     static_volume: 
     postgres_data:
+    media_volume:
