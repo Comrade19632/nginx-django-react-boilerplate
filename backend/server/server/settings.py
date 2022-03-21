@@ -31,8 +31,8 @@ ALLOWED_HOSTS = [
     "127.0.0.1",
     "0.0.0.0",
     "localhost",
-    "boilerplate.saasitive.com",
-    "www.boilerplate.saasitive.com",
+    "test.domain",
+    "www.test.domain",
 ]
 
 
@@ -85,7 +85,7 @@ PROTOCOL = "http"
 DOMAIN = "localhost:3000"
 if not DEBUG:
     PROTOCOL = "https"
-    DOMAIN = "boilerplate.saasitive.com"
+    DOMAIN = "test.domain"
 
 
 CORS_ALLOWED_ORIGINS = ["http://localhost:3000", "http://127.0.0.1:3000"]
