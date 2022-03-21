@@ -56,9 +56,9 @@ services:
         build:
             context: .
             dockerfile: ./docker/backend/Dockerfile
-        entrypoint: /app/docker/backend/celery-entrypoint.dev.sh
+        entrypoint: /app/docker/backend/celery-entrypoint.prod.sh
         env_file:
-        - ./.env.dev
+        - ./.env.prod
         depends_on:
         - db
         - backend
@@ -70,7 +70,7 @@ services:
             dockerfile: ./docker/backend/Dockerfile
         command: python3 backend/server/manage.py telegram_bot
         env_file:
-        - ./.env.dev
+        - ./.env.prod
         depends_on:
         - db
         - redis

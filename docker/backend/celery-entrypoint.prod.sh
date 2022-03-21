@@ -5,4 +5,4 @@ do
     echo "Waiting for server volume..."
 done
 
-celery -A zaim_server.celery worker --beat --loglevel=info
+celery -A server.celery worker --beat --loglevel=info
